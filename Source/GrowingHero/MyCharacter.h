@@ -9,6 +9,7 @@
 /**
  * 
  */
+DECLARE_DELEGATE(FDele_Single); // 인자 값 없는 함수에 사용
 
 UCLASS()
 class GROWINGHERO_API AMyCharacter : public AUnitBase
@@ -25,7 +26,10 @@ private:
     virtual void CombatRangeOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
     UFUNCTION()
     virtual void CombatRangeOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
+    void CallDelegate_PickUpItem();
 private:
     class AMyCharacterController* m_pMyController;
     class AEnemyCharacter* m_pEnemy;
@@ -40,6 +44,7 @@ public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
     class USphereComponent* CombatRange;
 
+
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Unit|MyHero")
     class UNiagaraSystem* LevelUpEffect;
 
@@ -51,4 +56,7 @@ public:
     void LevelUp();
 
     virtual void MediateAttackRange(float fAddRangeAmount) override;
+
+    // 델리게이트
+    FDele_Single Fuc_DeleSingle;
 };

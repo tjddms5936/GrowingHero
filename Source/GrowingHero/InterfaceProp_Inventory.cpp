@@ -7,7 +7,6 @@
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
 
-
 #include "InterfaceSystem/UISC_MGR.h"
 #include "UnitBase.h"
 #include "MyCharacterController.h"
@@ -33,12 +32,17 @@ void AInterfaceProp_Inventory::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
 
 	if(m_pMyController->getClickedActor() == this)
 		pickup();
+
+	// Super에서 이미 다 걸러서 내 캐릭터로 세팅된 상태
+	if(IsValid(m_pInterfacedUnit))
+		m_pInterfacedUnit->Fuc_DeleSingle.BindUFunction(this, FName("pickup"));
 }
 
 void AInterfaceProp_Inventory::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	if (IsValid(m_pInterfacedUnit))
+		m_pInterfacedUnit->Fuc_DeleSingle.Unbind();
 	Super::OnOverlapEnd(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
-
 }
 
 void AInterfaceProp_Inventory::ActivateSystem()
@@ -64,6 +68,7 @@ void AInterfaceProp_Inventory::pickup()
 
 		else
 		{
+			UGameplayStatics::SpawnSound2D(GetWorld(), PickUpSound);
 			m_pMyController->setClickedActor(nullptr);
 			AInterfaceProp::DestroyActor();
 		}

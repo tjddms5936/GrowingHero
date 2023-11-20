@@ -66,6 +66,7 @@ AMyCharacter::AMyCharacter()
 	CombatRange->InitSphereRadius(m_FStat.AttackRange);
 
 
+
 	initStat(100.f);
 	m_eCharType = ECharType::E_Hero;
 }
@@ -127,6 +128,28 @@ void AMyCharacter::CombatRangeOnOverlapEnd(UPrimitiveComponent* OverlappedCompon
 		}
 
 	}
+}
+
+void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	check(PlayerInputComponent); // PlayerInputComponent°¡ false¶ó¸é ÄÚµå ¸ØÃã
+
+	PlayerInputComponent->BindAction("PickUpItem", IE_Pressed, this, &AMyCharacter::CallDelegate_PickUpItem);
+}
+
+void AMyCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	Fuc_DeleSingle.Unbind();
+}
+
+void AMyCharacter::CallDelegate_PickUpItem()
+{
+	if (Fuc_DeleSingle.IsBound() == true)
+		Fuc_DeleSingle.Execute();
+	else
+		UE_LOG(LogTemp, Warning, TEXT("AMyCharacter::CallDelegate_PickUpItem() : IsNotBound"));
 }
 
 

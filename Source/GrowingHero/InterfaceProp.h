@@ -32,7 +32,7 @@ protected:
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InterfaceProp|UISC")
-	class AUnitBase* m_pInterfacedUnit;
+	class AMyCharacter* m_pInterfacedUnit;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InterfaceProp|UISC")
 	class AUISC_MGR* m_pUISC_MGR;
@@ -60,6 +60,6 @@ public:
 
 
 	AUnitBase* getInterfacedUnit();
-	void setInterfacedUnit(AUnitBase* pInterfacedUnit);
+	void setInterfacedUnit(AMyCharacter* pInterfacedUnit);
 	void DestroyActor();
 };

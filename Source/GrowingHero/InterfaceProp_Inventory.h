@@ -21,9 +21,13 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "InventoryProp|Info")
 	FName m_ItemRowName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InventoryProp|Info")
+	class USoundBase* PickUpSound;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
 public:
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 
@@ -33,6 +37,7 @@ public:
 
 	virtual void NotifyActorOnClicked(FKey PressedButton = EKeys::LeftMouseButton) override;
 
+	UFUNCTION()
 	void pickup();
 
 };

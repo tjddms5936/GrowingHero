@@ -76,11 +76,12 @@ void AInterfaceProp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 	if (!OtherActor->ActorHasTag("Hero") || !OtherActor->ActorHasTag("ExpGratee"))
 		return;
 
+	m_pInterfacedUnit = Cast<AMyCharacter>(OtherActor);
+
 	AInterfaceProp* ClickedProp = Cast<AInterfaceProp>(m_pMyController->getClickedActor());
 	if (ClickedProp != this)
 		return;
 
-	m_pInterfacedUnit = Cast<AUnitBase>(OtherActor);
 	
 }
 
@@ -130,7 +131,7 @@ AUnitBase* AInterfaceProp::getInterfacedUnit()
 	return m_pInterfacedUnit;
 }
 
-void AInterfaceProp::setInterfacedUnit(AUnitBase* pInterfacedUnit)
+void AInterfaceProp::setInterfacedUnit(AMyCharacter* pInterfacedUnit)
 {
 	m_pInterfacedUnit = pInterfacedUnit;
 }
