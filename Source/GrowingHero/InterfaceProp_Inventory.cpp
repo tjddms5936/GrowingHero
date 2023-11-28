@@ -13,11 +13,6 @@
 #include "InventoryComponent.h"
 #include "MyCharacter.h"
 
-AInterfaceProp_Inventory::AInterfaceProp_Inventory() :
-	Super()
-{
-
-}
 
 void AInterfaceProp_Inventory::BeginPlay()
 {
@@ -30,8 +25,11 @@ void AInterfaceProp_Inventory::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
 {
 	Super::OnOverlapBegin(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 
-	if(m_pMyController->getClickedActor() == this)
+	if (m_pMyController->getClickedActor() == this && !m_bIsInRange)
+	{
 		pickup();
+	}
+	m_bIsInRange = true;
 
 	// Super에서 이미 다 걸러서 내 캐릭터로 세팅된 상태
 	if(IsValid(m_pInterfacedUnit))
@@ -42,7 +40,9 @@ void AInterfaceProp_Inventory::OnOverlapEnd(UPrimitiveComponent* OverlappedCompo
 {
 	if (IsValid(m_pInterfacedUnit))
 		m_pInterfacedUnit->Fuc_DeleSingle.Unbind();
+	m_bIsInRange = false;
 	Super::OnOverlapEnd(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
+
 }
 
 void AInterfaceProp_Inventory::ActivateSystem()
@@ -53,7 +53,7 @@ void AInterfaceProp_Inventory::ActivateSystem()
 void AInterfaceProp_Inventory::NotifyActorOnClicked(FKey PressedButton)
 {
 	Super::NotifyActorOnClicked(PressedButton);
-	if (m_pInterfacedUnit)
+	if (m_pMyController->getClickedActor() == this && m_bIsInRange)
 	{
 		pickup();
 	}
@@ -69,7 +69,7 @@ void AInterfaceProp_Inventory::pickup()
 		else
 		{
 			UGameplayStatics::SpawnSound2D(GetWorld(), PickUpSound);
-			m_pMyController->setClickedActor(nullptr);
+			m_pMyController->m_pClickedProp = nullptr;
 			AInterfaceProp::DestroyActor();
 		}
 	}

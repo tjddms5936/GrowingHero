@@ -81,7 +81,13 @@ void AMyCharacterController::PlayerTick(float DeltaTime)
 			FRotator InterpRotation = FMath::RInterpTo(GetPawn()->GetActorRotation(), LookAtRotationYaw, DeltaTime, 15.f);
 
 			GetPawn()->SetActorRotation(InterpRotation);
+			GetMousePosition(m_fTmpMousePosX, m_fTmpMousePosY);
+			if (FMath::Abs(m_fMousePosX - m_fTmpMousePosX) > 100 || FMath::Abs(m_fMousePosY - m_fTmpMousePosY) > 100)
+			{
+				m_pClickedProp = nullptr;
+			}
 		}
+
 		MoveToMouseCursor();
 	}
 }
@@ -95,16 +101,11 @@ void AMyCharacterController::BeginPlay()
 
 }
 
-bool AMyCharacterController::IsInterfaceActor(AActor* pActor)
-{
-	if (pActor->ActorHasTag("InterfaceActor"))
-		return true;
-	return false;
-}
 
 void AMyCharacterController::InputClickPressed()
 {
 	bClickMouse = true;
+	GetMousePosition(m_fMousePosX, m_fMousePosY);
 }
 
 void AMyCharacterController::InputClickReleased()
@@ -160,11 +161,6 @@ void AMyCharacterController::HotKeyPressed(EKEY eKey)
 	HotKeyComponent->m_arHotKey[(int)eKey]->Activate();
 }
 
-void AMyCharacterController::setClickedActor(AActor* pClickedActor)
-{
-	m_pClickedProp = pClickedActor;
-
-}
 AActor* AMyCharacterController::getClickedActor()
 {
 	return m_pClickedProp;
@@ -198,17 +194,13 @@ void AMyCharacterController::MoveToMouseCursor()
 	// ﻿마우스 커서 아래에 레이 트레이스를 쏘고
 	FHitResult Hit;
 	GetHitResultUnderCursor(ECollisionChannel::ECC_Pawn, false, Hit);
-
+	
+	
 	// 차단 충돌여부의 결과를 보고
 	if (Hit.bBlockingHit)
 	{
 		if (m_pMyHero == nullptr)
 			return;
-
-		if (!IsInterfaceActor(Hit.GetActor()))
-		{
-			setClickedActor(nullptr);
-		}
 
 		// 마우스 눌린 곳으로 이동하기 위해 함수 호출
 		if (Hit.GetActor()->ActorHasTag("Enemy"))

@@ -16,12 +16,14 @@ public:
 	// Sets default values for this actor's properties
 	AInterfaceProp();
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InterfaceProp | Mesh")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class UStaticMeshComponent* m_pMesh;
 
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InterfaceProp | Collision")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	class USphereComponent* m_pCollisionVolume;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InventoryProp|Info")
+	class USoundBase* ActivateSystemSound;
 
 protected:
 	// Called when the game starts or when spawned
@@ -29,7 +31,7 @@ protected:
 
 protected:
 	class AMyCharacterController* m_pMyController;
-
+	bool m_bIsInRange;
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InterfaceProp|UISC")
 	class AMyCharacter* m_pInterfacedUnit;
@@ -54,10 +56,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	AUISC_MGR* getUISC_MGR();
 
-	virtual void ActivateSystem();
-
+	UFUNCTION()
 	virtual void NotifyActorOnClicked(FKey PressedButton = EKeys::LeftMouseButton) override;
 
+	virtual void ActivateSystem();
 
 	AUnitBase* getInterfacedUnit();
 	void setInterfacedUnit(AMyCharacter* pInterfacedUnit);

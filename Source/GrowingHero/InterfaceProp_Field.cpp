@@ -22,17 +22,17 @@ void AInterfaceProp_Field::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 {
 	Super::OnOverlapBegin(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 
-
-	if (m_pInterfacedUnit)
-	{
+	// Super에서 이미 무조건 Hero들어온걸로 걸러짐.
+	if(m_pInterfacedUnit && !m_bIsInRange)
 		ActivateSystem();
-	}
+
+	m_bIsInRange = true;
 }
 
 void AInterfaceProp_Field::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	Super::OnOverlapEnd(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
-
+	m_bIsInRange = false;
 }
 
 void AInterfaceProp_Field::ActivateSystem()
@@ -43,7 +43,7 @@ void AInterfaceProp_Field::ActivateSystem()
 void AInterfaceProp_Field::NotifyActorOnClicked(FKey PressedButton)
 {
 	Super::NotifyActorOnClicked(PressedButton);
-	if (m_pInterfacedUnit)
+	if (m_pInterfacedUnit && m_bIsInRange)
 	{
 		ActivateSystem();
 	}

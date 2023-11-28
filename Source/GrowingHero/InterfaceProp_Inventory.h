@@ -14,8 +14,6 @@ UCLASS()
 class GROWINGHERO_API AInterfaceProp_Inventory : public AInterfaceProp
 {
 	GENERATED_BODY()
-public:
-	AInterfaceProp_Inventory();
 
 public:
 

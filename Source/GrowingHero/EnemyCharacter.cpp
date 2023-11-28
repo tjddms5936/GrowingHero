@@ -40,7 +40,8 @@ void AEnemyCharacter::NotifyActorOnClicked(FKey PressedButton)
 	{
 		if (m_pMyController->getClickedActor() != this)
 		{
-			m_pMyController->setClickedActor(this);
+			m_pMyController->m_pClickedProp = this;
+			// m_pMyController->setClickedActor(this);
 		}
 		else
 		{

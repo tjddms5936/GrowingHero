@@ -14,6 +14,7 @@
 
 // Sets default values
 AInterfaceProp::AInterfaceProp() :
+	m_bIsInRange{},
 	m_arSystemComponent{},
 	m_eItemType{}
 {
@@ -25,7 +26,6 @@ AInterfaceProp::AInterfaceProp() :
 
 	m_pCollisionVolume = CreateDefaultSubobject<USphereComponent>(TEXT("CollisionVolume"));
 	m_pCollisionVolume->SetupAttachment(RootComponent);
-	m_pCollisionVolume->SetSphereRadius(100.f);
 }
 
 // Called when the game starts or when spawned
@@ -50,10 +50,10 @@ void AInterfaceProp::ActivateSystem()
 {
 	if (m_pInterfacedUnit == nullptr)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("m_pInterfacedUnit == nullptr"));
 		return;
 	}
 
+	UGameplayStatics::SpawnSound2D(GetWorld(), ActivateSystemSound);
 	for (auto v : m_arSystemComponent)
 	{
 		if (v)
@@ -92,7 +92,9 @@ void AInterfaceProp::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AAct
 
 	AInterfaceProp* ClickedProp = Cast<AInterfaceProp>(m_pMyController->getClickedActor());
 	if (ClickedProp == this)
-		m_pMyController->setClickedActor(nullptr);
+	{
+		m_pMyController->m_pClickedProp = nullptr;
+	}
 
 	for (auto v : m_arSystemComponent)
 	{
@@ -105,10 +107,8 @@ void AInterfaceProp::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AAct
 
 void AInterfaceProp::NotifyActorOnClicked(FKey PressedButton)
 {
-	if (m_pMyController)
-	{
-		m_pMyController->setClickedActor(this);
-	}
+
+	m_pMyController->m_pClickedProp = this;
 
 	TArray<AActor*> OverlappingActors{};
 	m_pCollisionVolume->GetOverlappingActors(OverlappingActors);
@@ -149,7 +149,7 @@ void AInterfaceProp::DestroyActor()
 
 	if (m_pMyController && m_pMyController->getClickedActor() == this)
 	{
-		m_pMyController->setClickedActor(nullptr);
+		m_pMyController->m_pClickedProp = nullptr;
 	}
 	Destroy();
 }

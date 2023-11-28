@@ -18,16 +18,19 @@ class GROWINGHERO_API AMyCharacterController : public APlayerController
 public:
 	AMyCharacterController();
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	AActor* m_pClickedProp;
 
-	// EUNIT_STATE m_eUnitState;
 private:
-	// private 멤버 변수
 	bool bClickMouse;
-	//class AInterfaceProp* m_pClickedProp;
 	float m_fInterfaceRagne;
 	class AMyCharacter* m_pMyHero;
+
+	float m_fMousePosX;
+	float m_fMousePosY;
+	float m_fTmpMousePosX;
+	float m_fTmpMousePosY;
+
 private:
 
 	// ========= test ============
@@ -38,7 +41,6 @@ private:
 	virtual void PlayerTick(float DeltaTime) override;
 	virtual void BeginPlay() override;
 
-	bool IsInterfaceActor(AActor* pActor);
 	// 키 입력 바이딩 함수
 	void InputClickPressed();
 	void InputClickReleased();
@@ -53,7 +55,6 @@ private:
 	void SetNewDestination(const FVector DestLocation, AActor* DestActor, float DstDistance, bool IsEnemy);
 	void MoveToMouseCursor();
 public:
-	void setClickedActor(AActor* pClickedActor);
 	UFUNCTION(BlueprintCallable)
 	AActor* getClickedActor();
 	void AttackAgain();

@@ -28,4 +28,5 @@ public:
 	virtual void ActivateSystem() override;
 
 	virtual void NotifyActorOnClicked(FKey PressedButton = EKeys::LeftMouseButton) override;
+
 };
