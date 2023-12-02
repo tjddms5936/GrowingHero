@@ -77,24 +77,12 @@ void AInterfaceProp::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 		return;
 
 	m_pInterfacedUnit = Cast<AMyCharacter>(OtherActor);
-
-	AInterfaceProp* ClickedProp = Cast<AInterfaceProp>(m_pMyController->getClickedActor());
-	if (ClickedProp != this)
-		return;
-
-	
 }
 
 void AInterfaceProp::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (!OtherActor->ActorHasTag("Hero") || !OtherActor->ActorHasTag("ExpGratee"))
 		return;
-
-	AInterfaceProp* ClickedProp = Cast<AInterfaceProp>(m_pMyController->getClickedActor());
-	if (ClickedProp == this)
-	{
-		m_pMyController->m_pClickedProp = nullptr;
-	}
 
 	for (auto v : m_arSystemComponent)
 	{
@@ -103,13 +91,12 @@ void AInterfaceProp::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AAct
 	}
 
 	m_pInterfacedUnit = nullptr;
+	if(m_pMyController->getClickedActor() == this)
+		m_pMyController->m_pClickedProp = nullptr;
 }
 
 void AInterfaceProp::NotifyActorOnClicked(FKey PressedButton)
 {
-
-	m_pMyController->m_pClickedProp = this;
-
 	TArray<AActor*> OverlappingActors{};
 	m_pCollisionVolume->GetOverlappingActors(OverlappingActors);
 	for (auto v : OverlappingActors)
@@ -120,6 +107,7 @@ void AInterfaceProp::NotifyActorOnClicked(FKey PressedButton)
 		AMyCharacter* MyChar = Cast<AMyCharacter>(v);
 		if (MyChar)
 		{
+			m_pMyController->m_pClickedProp = this;
 			m_pInterfacedUnit = MyChar;
 			break;
 		}

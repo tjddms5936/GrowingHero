@@ -54,14 +54,21 @@ enum class EItemState : uint8
 UENUM(BlueprintType)
 enum class EKEY : uint8
 {
-	E_Del = 0 UMETA(DisplayName = "Delete"),
+	E_1 =  0 UMETA(DisplayName = "1"),
+	E_2 UMETA(DisplayName = "2"),
+	E_3 UMETA(DisplayName = "3"),
+	E_4 UMETA(DisplayName = "4"),
+	E_5 UMETA(DisplayName = "5"),
+	E_6 UMETA(DisplayName = "6"),
+	E_Default UMETA(DisplayName = "Default"),
+	E_MAX UMETA(DisplayName = "E_MAX")
+	/*E_Del = 0 UMETA(DisplayName = "Delete"),
 	E_Ins UMETA(DisplayName = "Insert"),
 	E_End UMETA(DisplayName = "End"),
 	E_Home UMETA(DisplayName = "Home"),
 	E_PgUp UMETA(DisplayName = "Page Up"),
 	E_PgDown UMETA(DisplayName = "Page Down"),
-	E_Default UMETA(DisplayName = "Default"),
-	E_MAX UMETA(DisplayName = "E_MAX")
+	E_Default UMETA(DisplayName = "Default"),*/
 };
 
 UENUM(BlueprintType)

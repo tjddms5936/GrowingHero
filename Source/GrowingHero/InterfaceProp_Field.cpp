@@ -23,7 +23,7 @@ void AInterfaceProp_Field::OnOverlapBegin(UPrimitiveComponent* OverlappedCompone
 	Super::OnOverlapBegin(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 
 	// Super에서 이미 무조건 Hero들어온걸로 걸러짐.
-	if(m_pInterfacedUnit && !m_bIsInRange)
+	if(m_pMyController->getClickedActor() == this && m_pInterfacedUnit && !m_bIsInRange)
 		ActivateSystem();
 
 	m_bIsInRange = true;
@@ -43,7 +43,7 @@ void AInterfaceProp_Field::ActivateSystem()
 void AInterfaceProp_Field::NotifyActorOnClicked(FKey PressedButton)
 {
 	Super::NotifyActorOnClicked(PressedButton);
-	if (m_pInterfacedUnit && m_bIsInRange)
+	if (m_pMyController->getClickedActor() == this &&m_pInterfacedUnit && m_bIsInRange)
 	{
 		ActivateSystem();
 	}

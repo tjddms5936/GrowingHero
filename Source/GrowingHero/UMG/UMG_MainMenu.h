@@ -21,6 +21,10 @@ public:
 	UUMG_MainMenu(const FObjectInitializer& ObjectInitializer);
 	virtual bool Initialize() override;
 
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UWidgetAnimation* ClickAnimation;
+
 private:
 	UPROPERTY(meta = (BindWidget))
 	class UWidgetSwitcher* MenuSwitcher;
@@ -57,13 +61,13 @@ private:
 	
 	
 public:
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void GameLoadMenuOpen();
 
-	UFUNCTION()  
+	UFUNCTION(BlueprintCallable)
 	void GameGuideMenuOpen();
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void MenuCancel();
 
 	UFUNCTION()

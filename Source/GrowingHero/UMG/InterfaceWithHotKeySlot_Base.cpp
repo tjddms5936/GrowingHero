@@ -24,7 +24,7 @@ void UInterfaceWithHotKeySlot_Base::NativeOnInitialized()
 
 void UInterfaceWithHotKeySlot_Base::NativeConstruct()
 {
-
+	Super::NativeConstruct();
 }
 
 void UInterfaceWithHotKeySlot_Base::Activate()

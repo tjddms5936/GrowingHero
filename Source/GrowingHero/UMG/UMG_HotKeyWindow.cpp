@@ -40,12 +40,12 @@ void UUMG_HotKeyWindow::SwapSlot(EItemType eItemType, int32 nDragSlotIndex, int3
 void UUMG_HotKeyWindow::ppHotKeySlotInit()
 {
 	m_ppHotKeySlot.Init(nullptr, m_nMaxLength);
-	m_ppHotKeySlot[(int)EKEY::E_Del] = Slot_Del;
-	m_ppHotKeySlot[(int)EKEY::E_End] = Slot_End;
-	m_ppHotKeySlot[(int)EKEY::E_Home] = Slot_Home;
-	m_ppHotKeySlot[(int)EKEY::E_Ins] = Slot_Ins;
-	m_ppHotKeySlot[(int)EKEY::E_PgDown] = Slot_PgDown;
-	m_ppHotKeySlot[(int)EKEY::E_PgUp] = Slot_PgUp;
+	m_ppHotKeySlot[(int)EKEY::E_1] = Slot_1;
+	m_ppHotKeySlot[(int)EKEY::E_2] = Slot_2;
+	m_ppHotKeySlot[(int)EKEY::E_3] = Slot_3;
+	m_ppHotKeySlot[(int)EKEY::E_4] = Slot_4;
+	m_ppHotKeySlot[(int)EKEY::E_5] = Slot_5;
+	m_ppHotKeySlot[(int)EKEY::E_6] = Slot_6;
 }
 
 UUMG_HotKeySlot* UUMG_HotKeyWindow::getHotKeySlotFromIndex(int32 nHotKeySlotIndex)

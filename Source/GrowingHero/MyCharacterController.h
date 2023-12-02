@@ -34,7 +34,7 @@ private:
 private:
 
 	// ========= test ============
-	class UPathFollowingComponent* InitNaviControl();
+	// class UPathFollowingComponent* InitNaviControl();
 	//============================
 	// private 멤버 함수
 	virtual void SetupInputComponent() override;
@@ -42,18 +42,35 @@ private:
 	virtual void BeginPlay() override;
 
 	// 키 입력 바이딩 함수
+public:
+	UFUNCTION(BlueprintCallable)
 	void InputClickPressed();
+
+	UFUNCTION(BlueprintCallable)
 	void InputClickReleased();
+
+	UFUNCTION(BlueprintCallable)
 	void InventoryToggle();
+
+	UFUNCTION(BlueprintCallable)
 	void EquipmentWindowToggle();
+
+	UFUNCTION(BlueprintCallable)
 	void SkillWindowToggle();
+
+	UFUNCTION(BlueprintCallable)
 	void StatWindowToggle();
 
-	void HotKeyPressed(EKEY);
+	UFUNCTION(BlueprintCallable)
+	void HotKeyPressed(EKEY eKey);
 	// ===============================
 	
-	void SetNewDestination(const FVector DestLocation, AActor* DestActor, float DstDistance, bool IsEnemy);
-	void MoveToMouseCursor();
+	/*void SetNewDestination(const FVector DestLocation, AActor* DestActor, float DstDistance, bool IsEnemy);
+	void MoveToMouseCursor();*/
+private:
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+
 public:
 	UFUNCTION(BlueprintCallable)
 	AActor* getClickedActor();

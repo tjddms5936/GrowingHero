@@ -73,4 +73,7 @@ public:
 	virtual void SwapSlot(int32 nDragSlotIndex);
 
 	void setWindowSlotInterface(IInterface_Window_Slot* WindowSlot_Interface);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ToolTipToggle();
 };

@@ -38,22 +38,22 @@ public:
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_Del;
+		UUMG_HotKeySlot* Slot_1;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_Ins;
+		UUMG_HotKeySlot* Slot_2;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_End;
+		UUMG_HotKeySlot* Slot_3;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_Home;
+		UUMG_HotKeySlot* Slot_4;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_PgDown;
+		UUMG_HotKeySlot* Slot_5;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))
-		UUMG_HotKeySlot* Slot_PgUp;
+		UUMG_HotKeySlot* Slot_6;
 };
 
 

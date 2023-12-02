@@ -23,6 +23,7 @@ void UUMG_InventoryFrame::NativeOnInitialized()
 
 void UUMG_InventoryFrame::NativeConstruct()
 {
+	Super::NativeConstruct();
 }
 
 void UUMG_InventoryFrame::Setup()

@@ -63,4 +63,5 @@ private:
 	void FindClosestTarget();
 	void LookAtTarget();
 	void setProjectileSpeed();
+	void BoomEvent();
 };

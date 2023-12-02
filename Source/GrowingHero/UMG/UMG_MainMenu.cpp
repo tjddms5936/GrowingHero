@@ -7,6 +7,7 @@
 #include "Components/WidgetSwitcher.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "Animation/WidgetAnimation.h"
 
 UUMG_MainMenu::UUMG_MainMenu(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer)
@@ -18,30 +19,6 @@ bool UUMG_MainMenu::Initialize()
 {
 	bool Success = Super::Initialize(); // 혹시 Initialize가 false를 반환 할 수 있으므로
 	if (!Success) return false;
-
-	if (!ensure(GameStartBtn != nullptr)) 
-		return false;
-	GameStartBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::GameStart);
-
-	if (!ensure(OpenGameLoadMenuBtn != nullptr))
-		return false;
-	OpenGameLoadMenuBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::GameLoadMenuOpen);
-	
-	if (!ensure(OpenGameGuidMenueBtn != nullptr))
-		return false;
-	OpenGameGuidMenueBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::GameGuideMenuOpen);
-
-	if (!ensure(GameLoadMenuBackBtn != nullptr))
-		return false;
-	GameLoadMenuBackBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::MenuCancel);
-
-	if (!ensure(GameGuideMenuBackBtn != nullptr))
-		return false;
-	GameGuideMenuBackBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::MenuCancel);
-
-	if (!ensure(LoadGameBtn != nullptr))
-		return false;
-	LoadGameBtn->OnClicked.AddDynamic(this, &UUMG_MainMenu::LoadGame);
 	
 	if (!ensure(ExitBtn != nullptr))
 		return false;
@@ -53,7 +30,6 @@ bool UUMG_MainMenu::Initialize()
 
 void UUMG_MainMenu::GameLoadMenuOpen()
 {
-	UE_LOG(LogTemp, Warning, TEXT("GameLoad"));
 	if (!ensure(MenuSwitcher != nullptr)) 
 		return;
 	if (!ensure(LoadMenu != nullptr)) 
@@ -64,7 +40,6 @@ void UUMG_MainMenu::GameLoadMenuOpen()
 
 void UUMG_MainMenu::GameGuideMenuOpen()
 {
-	UE_LOG(LogTemp, Warning, TEXT("GameGuide"));
 	if (!ensure(MenuSwitcher != nullptr))
 		return;
 	if (!ensure(GuideMenu != nullptr))

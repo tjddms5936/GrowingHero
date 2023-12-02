@@ -13,6 +13,7 @@ UUMG_SkillFrame::UUMG_SkillFrame(const FObjectInitializer& ObjectInitializer) :
 
 void UUMG_SkillFrame::NativeOnInitialized()
 {
+	Super::NativeOnInitialized();
 	MyController = Cast<AMyCharacterController>(GetWorld()->GetFirstPlayerController());
 	if (!ensure(MyController != nullptr))
 		return;

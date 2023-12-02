@@ -23,13 +23,13 @@ UUMG_InventoryWindow::UUMG_InventoryWindow(const FObjectInitializer& ObjectIniti
 void UUMG_InventoryWindow::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
-	ppSlotInit();
-
+	ppSlotInit(); // 모든 슬롯 배열에 저장
 	for (int i = 0; i < m_nMaxLength; i++)
 	{
+		// Window에서는 모든 Slot의 멤버 변수인 인터페이스 포인터에 
+		// 인터페이스를 상속받은 자신을 등록 시켜준다.
 		m_ppSlot[i]->setWindowSlotInterface(this);
 	}
-
 	m_pMyController = Cast<AMyCharacterController>(GetWorld()->GetFirstPlayerController());
 }
 

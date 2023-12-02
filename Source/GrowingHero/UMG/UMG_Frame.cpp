@@ -3,6 +3,7 @@
 
 #include "UMG_Frame.h"
 #include "GrowingHero/MyCharacterController.h"
+#include "Kismet/GameplayStatics.h"
 
 UUMG_Frame::UUMG_Frame(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer),
@@ -19,6 +20,7 @@ void UUMG_Frame::NativeOnInitialized()
 
 void UUMG_Frame::NativeConstruct()
 {
+	Super::NativeConstruct();
 }
 
 void UUMG_Frame::Setup()
@@ -36,6 +38,8 @@ void UUMG_Frame::Setup()
 
 	m_pMyController->SetInputMode(InputModeData);
 	m_pMyController->SetShowMouseCursor(true);
+
+	UGameplayStatics::SpawnSound2D(GetWorld(), SetupSound);
 }
 
 void UUMG_Frame::TearDown()
@@ -49,9 +53,14 @@ void UUMG_Frame::TearDown()
 	if (!ensure(World != nullptr)) return;
 	FInputModeGameOnly InputModeData;
 	InputModeData.SetConsumeCaptureMouseDown(false);
+	FInputModeGameAndUI InputModeData2;
+	InputModeData2.SetHideCursorDuringCapture(false);
+	InputModeData2.SetLockMouseToViewportBehavior(EMouseLockMode::LockOnCapture);
 
-	m_pMyController->SetInputMode(InputModeData);
+	m_pMyController->SetInputMode(InputModeData2);
 	m_pMyController->SetShowMouseCursor(true);
+
+	UGameplayStatics::SpawnSound2D(GetWorld(), TearDownSound);
 }
 
 bool UUMG_Frame::getToggleState()

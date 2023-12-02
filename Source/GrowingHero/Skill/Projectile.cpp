@@ -52,7 +52,7 @@ void AProjectile::Disappear()
 void AProjectile::ActivateSkill()
 {
 	DetectTarget();
-	if (m_pTarget)
+	if (IsValid(m_pTarget))
 	{
 		m_pSkillOwner->getUnitStat()->m_MP -= m_nConsumeMP; // 마나소모
 		SpanwSkillNiagara_Sound();
@@ -61,6 +61,10 @@ void AProjectile::ActivateSkill()
 		setHomingTarget(m_pTarget);
 	}
 	// Target으로 발사. 만약 거리가 일정 범위 이하라면? 또는 이미 Collision 안에 Target이 있다면? 바로 데미지 주고 삭제
+	if (IsValid(m_pTarget) && m_pTarget->GetDistanceTo(this) <= 100)
+	{
+		BoomEvent();
+	}
 }
 
 void AProjectile::init(int32 nSkillLV, int32 nSkillMP)
@@ -90,13 +94,7 @@ void AProjectile::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActo
 
 	if (m_pTarget && m_pTarget == Cast<AEnemyCharacter>(OtherActor))
 	{
-		DestroySkillNiagara_Sound();
-		ApplyDmg();
-		if (IsInitOK)
-		{
-			Disappear();
-		}
-		IsDestroy = true;
+		BoomEvent();
 	}
 }
 
@@ -181,4 +179,15 @@ void AProjectile::setProjectileSpeed()
 {
 	ProjectileMovement->InitialSpeed = m_fProjectileSpeed;
 	ProjectileMovement->MaxSpeed = m_fProjectileSpeed;
+}
+
+void AProjectile::BoomEvent()
+{
+	DestroySkillNiagara_Sound();
+	ApplyDmg();
+	if (IsInitOK)
+	{
+		Disappear();
+	}
+	IsDestroy = true;
 }

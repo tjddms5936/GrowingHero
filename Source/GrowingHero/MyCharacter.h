@@ -22,17 +22,19 @@ public:
 private:
     virtual void BeginPlay() override;
     virtual void initStat(float MaxHP) override;
-    UFUNCTION()
-    virtual void CombatRangeOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-    UFUNCTION()
-    virtual void CombatRangeOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
     void CallDelegate_PickUpItem();
+
+    /*UFUNCTION()
+    virtual void CombatRangeOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+    UFUNCTION()
+    virtual void CombatRangeOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);*/
 private:
     class AMyCharacterController* m_pMyController;
     class AEnemyCharacter* m_pEnemy;
+    TArray<AEnemyCharacter*> OverlappingEnemies;
 
 public:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -59,4 +61,10 @@ public:
 
     // µ®∏Æ∞‘¿Ã∆Æ
     FDele_Single Fuc_DeleSingle;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+    float BaseTurnRate;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+    float BaseLookUpRate;
 };

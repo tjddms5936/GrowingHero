@@ -38,6 +38,7 @@ void UUMG_Inven_ConsumptionSlot::clearSlot()
 	m_bEmpty = true;
 	m_pThumbnail = m_pDefaultThumbnail;
 
+	ToolTipToggle();
 	m_FItem.ClearStructure();
 }
 

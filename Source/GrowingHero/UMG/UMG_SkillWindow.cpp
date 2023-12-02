@@ -20,7 +20,7 @@ void UUMG_SkillWindow::NativeOnInitialized()
 
 void UUMG_SkillWindow::NativeConstruct()
 {
-
+	Super::NativeConstruct();
 }
 
 void UUMG_SkillWindow::init()

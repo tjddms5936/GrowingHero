@@ -15,7 +15,9 @@ UUMG_HotKeySlot::UUMG_HotKeySlot(const FObjectInitializer& ObjectInitializer) :
 
 void UUMG_HotKeySlot::NativeOnInitialized()
 {
+	Super::NativeOnInitialized();
 	m_pMyController = Cast<AMyCharacterController>(GetWorld()->GetFirstPlayerController());
+	m_ppInterfaceSlot = &(m_pMyController->HotKeyComponent->m_arHotKey[(int)m_eKey]);
 }
 
 void UUMG_HotKeySlot::NativeConstruct()
@@ -23,7 +25,7 @@ void UUMG_HotKeySlot::NativeConstruct()
 	Super::NativeConstruct();
 
 	// HotKeyComponent이 들고있는 배열에 접근해서 경로 지정해준다.  
-	m_ppInterfaceSlot = &(m_pMyController->HotKeyComponent->m_arHotKey[(int)m_eKey]);
+	// m_ppInterfaceSlot = &(m_pMyController->HotKeyComponent->m_arHotKey[(int)m_eKey]);
 }
 
 

@@ -41,11 +41,11 @@ void AEnemyCharacter::NotifyActorOnClicked(FKey PressedButton)
 		if (m_pMyController->getClickedActor() != this)
 		{
 			m_pMyController->m_pClickedProp = this;
-			// m_pMyController->setClickedActor(this);
 		}
 		else
 		{
 			m_pMyController->AttackAgain();
+			UE_LOG(LogTemp, Warning, TEXT("AEnemyCharacter::NotifyActorOnClicked"));
 		}
 			
 	}

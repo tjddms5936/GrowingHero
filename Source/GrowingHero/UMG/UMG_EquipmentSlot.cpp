@@ -26,7 +26,7 @@ void UUMG_EquipmentSlot::NativeOnInitialized()
 
 void UUMG_EquipmentSlot::NativeConstruct()
 {
-
+	Super::NativeConstruct();
 }
 
 void UUMG_EquipmentSlot::UnEquipItem()

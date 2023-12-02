@@ -39,6 +39,7 @@ void UUMG_Inven_EquipmentSlot::clearSlot()
 	m_bEmpty = true;
 	m_pThumbnail = m_pDefaultThumbnail;
 
+	ToolTipToggle();
 	m_FEuqipItem.ClearStructure();
 }
 

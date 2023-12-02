@@ -63,12 +63,12 @@ void UService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMem
 	// 300의 반지름을 가진 구체를 만들어서 오브젝트를 감지한다.
 	TArray<FOverlapResult> OverlapResults{};
 	FCollisionQueryParams CollisionQueryParam(NAME_None, false, SelfUnit);
-	// FCollisionQueryParams CollisionQueryParam(NAME_None, false, AAIControllerBase::SelfUnit);
+	//FCollisionQueryParams CollisionQueryParam(NAME_None, false, AAIControllerBase::SelfUnit);
 	bool bResult = World->OverlapMultiByChannel(
 		OverlapResults,
 		Center,
 		FQuat::Identity,
-		ECollisionChannel::ECC_GameTraceChannel2,
+		ECollisionChannel::ECC_Visibility,
 		FCollisionShape::MakeSphere(DetectRadius),
 		CollisionQueryParam
 	);
@@ -89,11 +89,3 @@ void UService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMem
 		OwnerComp.GetBlackboardComponent()->SetValueAsObject(AAIControllerBase::Key_Target, nullptr);
 	}
 }
-
-// 디버깅 용.
-
-/*DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Green, false, 0.2f);
-DrawDebugPoint(World, Target->GetActorLocation(), 10.0f, FColor::Blue, false, 0.2f);
-DrawDebugLine(World, ControllingPawn->GetActorLocation(), Target->GetActorLocation(), FColor::Blue, false, 0.2f);*/
-
-// DrawDebugSphere(World, Center, DetectRadius, 16, FColor::Red, false, 0.2f);

@@ -18,10 +18,11 @@ public:
 	UUMG_Frame(const FObjectInitializer& ObjectInitializer); // 생성자
 	virtual void NativeOnInitialized() override; // 위젯이 생성될 때 딱 한 번 호출된다. 에디터 편집 시에도 생성될 때 호출된다
 	virtual void NativeConstruct() override; // AddToViewport 시 호출된다. NativeOnInitialized 와 달리, Viewport 에 Add 될 때마다 불린다!
+
 protected:
 	bool m_bOpenFrame;
-
 	class AMyCharacterController* m_pMyController;
+
 public:
 	virtual void Setup();
 
@@ -29,4 +30,10 @@ public:
 	virtual void TearDown();
 
 	bool getToggleState();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Skill|Customizing")
+	class USoundBase* SetupSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Skill|Customizing")
+	class USoundBase* TearDownSound;
 };
