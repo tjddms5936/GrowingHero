@@ -2,7 +2,6 @@
 
 #include "EquipmentComponent.h"
 #include "Blueprint/UserWidget.h"
-#include "UObject/ConstructorHelpers.h"
 #include "MyCharacter.h"
 #include "MyCharacterController.h"
 #include "InventoryComponent.h"

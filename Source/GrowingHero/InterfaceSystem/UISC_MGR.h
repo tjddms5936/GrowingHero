@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "UserInterfaceSystemComponent.h"
 #include "GrowingHero/EnumCollection.h"
 #include "UISC_MGR.generated.h"
 
@@ -26,7 +25,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	void createEnergyControl(UUserInterfaceSystemComponent*& pUISC);
+	void createEnergyControl(class UUserInterfaceSystemComponent*& pUISC);
 	void createEquipSystem(UUserInterfaceSystemComponent*& pUISC);
 	void createStatUpSystem(UUserInterfaceSystemComponent*& pUISC);
 

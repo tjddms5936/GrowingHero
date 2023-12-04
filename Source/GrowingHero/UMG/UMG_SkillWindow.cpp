@@ -2,6 +2,7 @@
 
 
 #include "UMG_SkillWindow.h"
+#include "UMG_SkillSlot.h"
 
 UUMG_SkillWindow::UUMG_SkillWindow(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer),

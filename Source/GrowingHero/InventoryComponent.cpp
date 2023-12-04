@@ -3,11 +3,8 @@
 
 #include "InventoryComponent.h"
 #include "Blueprint/UserWidget.h"
-#include "UObject/ConstructorHelpers.h"
 #include "UMG/UMG_InventoryWindow.h"
-#include "UMG/UMG_InventorySlot.h"
 #include "UMG//UMG_InventoryFrame.h"
-
 #include "UMG/UMG_Inven_ConsumptionSlot.h"
 #include "UMG/UMG_Inven_EquipmentSlot.h"
 

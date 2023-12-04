@@ -3,8 +3,6 @@
 
 #include "StatComponent.h"
 #include "Blueprint/UserWidget.h"
-#include "UObject/ConstructorHelpers.h"
-
 #include "UMG//UMG_StatFrame.h"
 #include "UMG/UMG_StatWindow.h"
 #include "MyCharacter.h"

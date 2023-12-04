@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "SkillBase.h"
 #include "GrowingHero/EnumCollection.h"
-#include "GameFramework/DamageType.h"
 #include "Summons_Fix.generated.h"
 
 /**
@@ -49,7 +48,7 @@ public:
 	float m_fAttackSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-	TSubclassOf<UDamageType> DamageTypeClass;
+	TSubclassOf<class UDamageType> DamageTypeClass;
 public:
 	void AttackTarget();
 	

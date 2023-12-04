@@ -14,18 +14,7 @@ const FName ASummonAIController::Key_Owner(TEXT("Owner"));
 
 ASummonAIController::ASummonAIController()
 {
-	static ConstructorHelpers::FObjectFinder<UBlackboardData> BBObject(TEXT("/Game/Blueprints/MySummonAI/BB_Summon.BB_Summon"));
-	if (BBObject.Succeeded())
-	{
-		BBAsset = BBObject.Object;
-		UE_LOG(LogTemp, Warning, TEXT("Succeeded"));
-	}
-
-	static ConstructorHelpers::FObjectFinder<UBehaviorTree> BTObject(TEXT("/Game/Blueprints/MySummonAI/BT_Summon.BT_Summon"));
-	if (BTObject.Succeeded())
-	{
-		BTAsset = BTObject.Object;
-	}
+	
 }
 
 void ASummonAIController::OnPossess(APawn* InPawn)

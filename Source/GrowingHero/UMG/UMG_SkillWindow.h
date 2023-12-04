@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_SkillSlot.h"
 #include "UMG_SkillWindow.generated.h"
 
 /**
@@ -26,7 +25,7 @@ private:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "SlotArray")
-	TArray<UUMG_SkillSlot*> m_ppSlot;
+	TArray<class UUMG_SkillSlot*> m_ppSlot;
 
 private:
 

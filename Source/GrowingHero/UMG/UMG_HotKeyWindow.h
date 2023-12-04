@@ -4,9 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_HotKeySlot.h"
 #include "Interface_Window_Slot.h"
-#include "InterfaceWithHotKeySlot_Base.h"
 #include "UMG_HotKeyWindow.generated.h"
 
 /**
@@ -34,7 +32,7 @@ private:
 
 public:
 	UFUNCTION(BlueprintCallable)
-	UUMG_HotKeySlot* getHotKeySlotFromIndex(int32 nHotKeySlotIndex);
+	class UUMG_HotKeySlot* getHotKeySlotFromIndex(int32 nHotKeySlotIndex);
 
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (BindWidget))

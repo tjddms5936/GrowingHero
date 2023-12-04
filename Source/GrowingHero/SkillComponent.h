@@ -57,8 +57,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	int32 getSkillPoint();
 	void UsingSkill(ESkillNum eSkillNum);
-	void setOwnerUnit(AUnitBase* pOwnerUnit);
-	void setOwnerController(AMyCharacterController* pController);
+
 };
 
 

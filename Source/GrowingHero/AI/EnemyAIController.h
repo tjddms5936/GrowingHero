@@ -20,6 +20,4 @@ public:
 	virtual void OnPossess(APawn* InPawn) override;
 	static const FName Key_HomePos;
 	static const FName Key_PatrolPos;
-	// static const FName Key_Target;
-	// static const FName Key_State;
 };

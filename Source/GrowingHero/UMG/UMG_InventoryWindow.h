@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_InventorySlot.h"
 #include "Interface_Window_Slot.h"
+#include "GrowingHero/StructureCollection.h"
 #include "UMG_InventoryWindow.generated.h"
 
 /**
@@ -22,7 +22,7 @@ public:
 	virtual void SwapSlot(EItemType eItemType, int32 nDragSlotIndex, int32 nDropSlotIndex) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "SlotArray")
-	TArray<UUMG_InventorySlot*> m_ppSlot;
+	TArray <class  UUMG_InventorySlot*> m_ppSlot;
 
 	// m_ppSlot 배열에서 가장 처음부터 검색하면서 빈 슬롯을 찾아서 반환
 	bool getEmptySlotIndex(int32& nResult);

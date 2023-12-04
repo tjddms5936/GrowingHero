@@ -8,13 +8,16 @@
 #include "InterfaceProp_Inventory.h"
 #include "EquipItem.h"
 #include "Skill/SkillBase.h"
-#include "Skill/BuffEffectBase.h"
+//#include "Skill/BuffEffectBase.h"
 #include "EnumCollection.h"
 #include "StructureCollection.generated.h"
 
 /**
  * 
  */
+class AInterfaceProp_Inventory;
+class AEquipItem;
+class ASkillBase;
 
 USTRUCT(BlueprintType)
 struct FInventoryItem : public FTableRowBase // 데이터 테이블 사용하기 위해 상속받음
@@ -120,7 +123,7 @@ public:
 	TSubclassOf<AInterfaceProp_Inventory> FieldItemClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<class AEquipItem> EquipItemClass;
+	TSubclassOf<AEquipItem> EquipItemClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UTexture2D* Thumbnail;

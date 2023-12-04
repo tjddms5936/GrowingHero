@@ -7,7 +7,6 @@
 #include "MyCharacterController.h"
 #include "MyCharacter.h"
 
-#include "Kismet/GameplayStatics.h"
 #include "Components/SphereComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 

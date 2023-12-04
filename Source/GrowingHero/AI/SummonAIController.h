@@ -19,7 +19,5 @@ public:
 
 	virtual void OnPossess(APawn* InPawn) override;
 	static const FName Key_Owner;
-	// static const FName Key_Target;
-	// static const FName Key_State;
 
 };

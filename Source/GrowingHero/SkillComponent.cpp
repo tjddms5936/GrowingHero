@@ -7,9 +7,6 @@
 #include "Skill/SkillBase.h"
 #include "MyCharacter.h"
 #include "MyCharacterController.h"
-#include "EnemyCharacter.h"
-
-#include "UObject/ConstructorHelpers.h"
 #include "Engine/DataTable.h"
 
 
@@ -43,6 +40,9 @@ USkillComponent::USkillComponent() :
 void USkillComponent::BeginPlay()
 {
 	Super::BeginPlay();
+
+	m_pMyController = Cast<AMyCharacterController>(GetWorld()->GetFirstPlayerController());
+	m_pOwnerUnit = Cast<AMyCharacter>(m_pMyController->GetPawn());
 
 	init();
 	LoadSkillFrame();
@@ -192,15 +192,3 @@ void USkillComponent::UsingSkill(ESkillNum eSkillNum)
 			*(m_mapCantDuplicatedSkill.Find(eSkillNum)) = pSpawnedSkill;
 	}
 }
-
-void USkillComponent::setOwnerUnit(AUnitBase* pOwnerUnit)
-{
-	m_pOwnerUnit = pOwnerUnit;
-}
-
-void USkillComponent::setOwnerController(AMyCharacterController* pController)
-{
-	m_pMyController = pController;
-}
-
-

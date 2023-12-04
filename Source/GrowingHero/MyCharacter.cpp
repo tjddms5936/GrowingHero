@@ -77,9 +77,6 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
-	/*CombatRange->OnComponentBeginOverlap.AddDynamic(this, &AMyCharacter::CombatRangeOnOverlapBegin);
-	CombatRange->OnComponentEndOverlap.AddDynamic(this, &AMyCharacter::CombatRangeOnOverlapEnd);*/
 	CombatRange->SetSphereRadius(getUnitStat()->AttackRange);
 
 	m_pMyController = Cast<AMyCharacterController>(GetController());

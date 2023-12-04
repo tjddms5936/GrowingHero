@@ -5,7 +5,6 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardData.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "UObject/ConstructorHelpers.h"
 
 #include "GrowingHero/UnitBase.h"
 
@@ -20,6 +19,9 @@ AAIControllerBase::AAIControllerBase()
 void AAIControllerBase::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
+	if (!IsValid(BTAsset) || !IsValid(BBAsset))
+		return;
+
 	RunAI();
 
 	AUnitBase* TmpSelfUnit = Cast<AUnitBase>(GetPawn());

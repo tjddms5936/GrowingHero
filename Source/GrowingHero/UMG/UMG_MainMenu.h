@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "GrowingHero/GrowingHeroSaveGame.h"
-#include "Kismet/GameplayStatics.h"
 #include "UMG_MainMenu.generated.h"
 
 /**

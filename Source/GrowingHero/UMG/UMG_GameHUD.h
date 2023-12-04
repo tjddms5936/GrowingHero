@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_InventoryWindow.h"
 #include "UMG_GameHUD.generated.h"
 
 /**
@@ -21,7 +20,7 @@ public:
 
 public:
 	UFUNCTION(BlueprintCallable)
-	UUMG_InventoryWindow* getInventoryWindow(EItemType eItemType);
+	class UUMG_InventoryWindow* getInventoryWindow(EItemType eItemType);
 
 private:
 	UUMG_InventoryWindow*(UUMG_GameHUD::* m_arGetInventoryWindow[(int)EItemType::E_MAX])();

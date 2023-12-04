@@ -4,7 +4,6 @@
 #include "UISC_StatUp.h"
 #include "GrowingHero/MyCharacter.h"
 #include "GrowingHero/MyCharacterController.h"
-#include "GrowingHero/StructureCollection.h"
 
 UUISC_StatUp::UUISC_StatUp()
 {

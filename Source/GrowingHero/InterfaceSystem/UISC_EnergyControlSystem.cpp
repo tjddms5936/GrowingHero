@@ -2,8 +2,8 @@
 
 
 #include "UISC_EnergyControlSystem.h"
-#include "GrowingHero/InterfaceProp.h"
 #include "GrowingHero/UnitBase.h"
+
 void UUISC_EnergyControlSystem::AddHP()
 {
 	UE_LOG(LogTemp, Warning, TEXT("m_fAddHP : %f"), m_fAddHP);

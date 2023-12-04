@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "SkillBase.h"
-#include "Summoned_Warrior.h"
 #include "Summons_Warrior.generated.h"
 
 /**
@@ -29,7 +28,7 @@ private:
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Skill|Customizing")
-	TSubclassOf<ASummoned_Warrior> SpawnWarrior;
+	TSubclassOf<class ASummoned_Warrior> SpawnWarrior;
 
 	ASummoned_Warrior* m_pSpawnedWarrior;
 

@@ -4,11 +4,6 @@
 #include "InterfaceProp_Field.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "DrawDebugHelpers.h"
-#include "Kismet/GameplayStatics.h"
-
-#include "InterfaceSystem/UISC_MGR.h"
-#include "UnitBase.h"
 #include "MyCharacterController.h"
 
 void AInterfaceProp_Field::BeginPlay()

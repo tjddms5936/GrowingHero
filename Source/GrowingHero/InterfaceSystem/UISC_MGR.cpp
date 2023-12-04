@@ -5,6 +5,7 @@
 #include "UISC_EnergyControlSystem.h"
 #include "UISC_EquipSystem.h"
 #include "UISC_StatUp.h"
+#include "UserInterfaceSystemComponent.h"
 
 // Sets default values
 AUISC_MGR::AUISC_MGR()

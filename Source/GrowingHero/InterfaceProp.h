@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "InterfaceSystem/UISC_MGR.h"
+#include "EnumCollection.h"
 #include "InterfaceProp.generated.h"
 
 UCLASS(Abstract)
@@ -61,7 +61,7 @@ public:
 
 	virtual void ActivateSystem();
 
-	AUnitBase* getInterfacedUnit();
+	class AMyCharacter* getInterfacedUnit();
 	void setInterfacedUnit(AMyCharacter* pInterfacedUnit);
 	void DestroyActor();
 };

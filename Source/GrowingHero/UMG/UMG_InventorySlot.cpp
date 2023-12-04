@@ -2,9 +2,7 @@
 
 
 #include "UMG_InventorySlot.h"
-#include "Components/Image.h"
 #include "Engine/DataTable.h"
-
 #include "GrowingHero/MyCharacter.h"
 #include "GrowingHero/MyCharacterController.h"
 

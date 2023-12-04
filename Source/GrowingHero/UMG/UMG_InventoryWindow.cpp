@@ -4,7 +4,7 @@
 #include "UMG_InventoryWindow.h"
 #include "GrowingHero/MyCharacterController.h"
 #include "GrowingHero/InventoryComponent.h"
-#include "GrowingHero/HotKeyComponent.h"
+#include "Interface_Window_Slot.h"
 
 #include "UMG_Inven_ConsumptionSlot.h"
 #include "UMG_Inven_EquipmentSlot.h"

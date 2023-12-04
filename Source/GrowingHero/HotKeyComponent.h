@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "UMG/InterfaceWithHotKeySlot_Base.h"
 #include "EnumCollection.h"
 #include "HotKeyComponent.generated.h"
 
@@ -31,7 +30,7 @@ private:
 
 
 public:
-	TArray<UInterfaceWithHotKeySlot_Base*> m_arHotKey;
+	TArray<class UInterfaceWithHotKeySlot_Base*> m_arHotKey;
 	
 	void setHotKey(EKEY eKey, UInterfaceWithHotKeySlot_Base* pInterfaceSlot);
 

@@ -4,13 +4,11 @@
 #include "InterfaceProp.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
-#include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
-#include "UObject/ConstructorHelpers.h"
-
-#include "InterfaceSystem/UISC_MGR.h"
 #include "MyCharacterController.h"
 #include "MyCharacter.h"
+#include "InterfaceSystem/UISC_MGR.h"
+#include "InterfaceSystem/UserInterfaceSystemComponent.h"
 
 // Sets default values
 AInterfaceProp::AInterfaceProp() :
@@ -114,7 +112,7 @@ void AInterfaceProp::NotifyActorOnClicked(FKey PressedButton)
 	}
 }
 
-AUnitBase* AInterfaceProp::getInterfacedUnit()
+AMyCharacter* AInterfaceProp::getInterfacedUnit()
 {
 	return m_pInterfacedUnit;
 }

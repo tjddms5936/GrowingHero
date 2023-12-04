@@ -4,9 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Interface_Window_Slot.h"
 #include "InterfaceWithHotKeySlot_Base.h"
-
 #include "GrowingHero/StructureCollection.h"
 #include "GrowingHero/EnumCollection.h"
 #include "UMG_InventorySlot.generated.h"
@@ -51,7 +49,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "SlotInfo")
 	bool m_bEmpty;
 
-	IInterface_Window_Slot* m_WindowSlotInterface;
+	class IInterface_Window_Slot* m_WindowSlotInterface;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SlotInfo")
 	UTexture2D* m_pDefaultThumbnail;

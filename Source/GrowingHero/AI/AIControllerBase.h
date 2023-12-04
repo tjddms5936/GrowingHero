@@ -20,11 +20,11 @@ public:
 	virtual void OnPossess(APawn* InPawn) override;
 	static const FName Key_Target;
 	static const FName Key_SelfUnit;
-protected:
-	UPROPERTY()
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "AI|Default")
 	class UBehaviorTree* BTAsset;
 
-	UPROPERTY()
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "AI|Default")
 	class UBlackboardData* BBAsset;
 
 public:

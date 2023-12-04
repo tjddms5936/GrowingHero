@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_EquipmentSlot.h"
 #include "UMG_EquipmentWindow.generated.h"
 
 /**
@@ -22,7 +21,7 @@ private:
 	int32 m_nMaxLength;
 	
 public:
-	TArray<UUMG_EquipmentSlot*> m_arEquipmentSlot;
+	TArray<class UUMG_EquipmentSlot*> m_arEquipmentSlot;
 
 public:
 	void UpdateEquipmentSlot(EEquipType eEquipType);

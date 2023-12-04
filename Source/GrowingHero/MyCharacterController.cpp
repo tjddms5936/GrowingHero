@@ -10,21 +10,21 @@
 #include "CombatComponent.h"
 #include "StatComponent.h"
 
-#include "UnitBase.h"
 #include "EnemyCharacter.h"
 #include "MyCharacter.h"
-#include "InterfaceProp.h"
 
 #include "UMG/UMG_InventoryFrame.h"
 #include "UMG/UMG_EquipmentFrame.h"
 #include "UMG/UMG_SkillFrame.h"
 #include "UMG/UMG_StatFrame.h"
+#include "UMG/InterfaceWithHotKeySlot_Base.h"
 
-#include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "NavigationSystem.h"
-#include "AIController.h"
-#include "Widgets/SWidget.h"
+
+// #include "Blueprint/AIBlueprintHelperLibrary.h"
+//#include "NavigationSystem.h"
+//#include "AIController.h"
+//#include "Widgets/SWidget.h"
 
 AMyCharacterController::AMyCharacterController() :
 	bClickMouse{},
@@ -78,8 +78,6 @@ void AMyCharacterController::BeginPlay()
 {
 	Super::BeginPlay();
 	m_pMyHero = Cast<AMyCharacter>(GetPawn());
-	SkillComponent->setOwnerUnit(m_pMyHero);
-	SkillComponent->setOwnerController(this);
 
 }
 

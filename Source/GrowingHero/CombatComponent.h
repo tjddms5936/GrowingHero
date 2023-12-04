@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "EnumCollection.h"
-#include "GameFramework/DamageType.h"
 #include "CombatComponent.generated.h"
 
 
@@ -33,7 +32,7 @@ private:
 	void RotateToTarget(float DeltaTime);
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat")
-	TSubclassOf<UDamageType> DamageTypeClass;
+	TSubclassOf <class UDamageType> DamageTypeClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Combat")
 	class UAnimMontage* CombatMontage;

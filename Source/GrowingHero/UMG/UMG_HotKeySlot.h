@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Interface_Window_Slot.h"
-#include "InterfaceWithHotKeySlot_Base.h"
 #include "UMG_HotKeySlot.generated.h"
 
 /**
@@ -41,7 +39,7 @@ public:
 	UTexture2D* m_pThumbnail;
 	
 	// 인벤토리 Slot이나 스킬 Slot이 등록될 것이다. 이중포인터는 UPROPERTY가 안된다.
-	UInterfaceWithHotKeySlot_Base** m_ppInterfaceSlot;
+	class UInterfaceWithHotKeySlot_Base** m_ppInterfaceSlot;
 	
 	class IInterface_Window_Slot* m_WindowSlotInterface;
 

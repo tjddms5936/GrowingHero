@@ -31,23 +31,6 @@ void UService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMem
 	}
 	if (SelfUnit->getUnitState() == EUNIT_STATE::E_Attack || SelfUnit->getUnitState() == EUNIT_STATE::E_UnderAttack)
 		return;
-	/*if (AAIControllerBase::SelfUnit == nullptr)
-	{
-		return;
-	}
-
-
-	if (AAIControllerBase::SelfUnit->getUnitState() == EUNIT_STATE::E_Dead)
-	{
-		OwnerComp.GetAIOwner()->StopMovement();
-		OwnerComp.GetBlackboardComponent()->SetValueAsObject(AAIControllerBase::Key_Target, nullptr);
-		return;
-	}
-	
-
-	if (AAIControllerBase::SelfUnit->getUnitState() == EUNIT_STATE::E_Attack || 
-		AAIControllerBase::SelfUnit->getUnitState() == EUNIT_STATE::E_UnderAttack)
-		return;*/
 	
 
 	// 구 만들기
@@ -68,7 +51,7 @@ void UService_Detect::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMem
 		OverlapResults,
 		Center,
 		FQuat::Identity,
-		ECollisionChannel::ECC_Visibility,
+		ECollisionChannel::ECC_Pawn,
 		FCollisionShape::MakeSphere(DetectRadius),
 		CollisionQueryParam
 	);

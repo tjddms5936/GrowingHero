@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UMG_HotKeySlot.h"
 #include "InterfaceWithHotKeySlot_Base.generated.h"
 
 /**

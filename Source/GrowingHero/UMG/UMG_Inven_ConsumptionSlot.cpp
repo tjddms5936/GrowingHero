@@ -6,6 +6,8 @@
 #include "GrowingHero/MyCharacter.h"
 #include "GrowingHero/MyCharacterController.h"
 #include "GrowingHero/InventoryComponent.h"
+#include "GrowingHero/InterfaceProp_Inventory.h"
+#include "Interface_Window_Slot.h"
 
 UUMG_Inven_ConsumptionSlot::UUMG_Inven_ConsumptionSlot(const FObjectInitializer& ObjectInitializer) :
 	Super(ObjectInitializer)

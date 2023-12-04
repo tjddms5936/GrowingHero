@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "UMG_Frame.h"
-#include "UMG_SkillWindow.h"
 #include "UMG_SkillFrame.generated.h"
 
 /**

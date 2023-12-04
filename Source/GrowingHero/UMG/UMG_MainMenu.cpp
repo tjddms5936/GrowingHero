@@ -2,7 +2,6 @@
 
 
 #include "UMG_MainMenu.h"
-#include "UObject/ConstructorHelpers.h"
 #include "Components/Button.h"
 #include "Components/WidgetSwitcher.h"
 #include "Kismet/KismetSystemLibrary.h"

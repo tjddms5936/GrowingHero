@@ -2,6 +2,7 @@
 
 
 #include "HotKeyComponent.h"
+#include "UMG/InterfaceWithHotKeySlot_Base.h"
 
 // Sets default values for this component's properties
 UHotKeyComponent::UHotKeyComponent() :
