@@ -9,7 +9,8 @@
 /**
  * 
  */
-DECLARE_DELEGATE(FDele_Single); // 인자 값 없는 함수에 사용
+//DECLARE_DELEGATE(FDele_Single); // 인자 값 없는 함수에 사용
+//DECLARE_MULTICAST_DELEGATE(FDele_Multi); // 인자 값 없는 함수에 사용. 여러 함수를 바인딩 하기 위한 멀티캐스트
 
 UCLASS()
 class GROWINGHERO_API AMyCharacter : public AUnitBase
@@ -59,8 +60,10 @@ public:
 
     virtual void MediateAttackRange(float fAddRangeAmount) override;
 
+public:
     // 델리게이트
-    FDele_Single Fuc_DeleSingle;
+    /*FDele_Single Fuc_DeleSingle;
+    FDele_Multi Fuc_DeleMulti;*/
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
     float BaseTurnRate;

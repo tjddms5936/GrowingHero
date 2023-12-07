@@ -10,6 +10,10 @@
 /**
  * 
  */
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDele_Dynamic);
+DECLARE_DELEGATE(FDele_Single);
+
 UCLASS()
 class GROWINGHERO_API AMyCharacterController : public APlayerController
 {
@@ -21,10 +25,16 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	AActor* m_pClickedProp;
 
+	UPROPERTY(BlueprintReadWrite)
+	class AMyCharacter* m_pMyHero;
+
+	UPROPERTY(BlueprintAssignable, VisibleAnywhere, BlueprintCallable, Category = "Event")
+	FDele_Dynamic ED_ItemPickupPressed;
+
+	FDele_Single ED_EnemyOutlineOff; 
 private:
 	bool bClickMouse;
 	float m_fInterfaceRagne;
-	class AMyCharacter* m_pMyHero;
 
 	float m_fMousePosX;
 	float m_fMousePosY;
@@ -71,11 +81,13 @@ private:
 	void MoveForward(float Value);
 	void MoveRight(float Value);
 
+
 public:
 	UFUNCTION(BlueprintCallable)
 	AActor* getClickedActor();
 	void AttackAgain();
 	FVector getMouseLocation();
+	void setClickedActor(AActor* pActor);
 
 public:
 	// === inventory 작업 ===
@@ -97,4 +109,5 @@ public:
 	// === Stat 작업 ===
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "SystemComponent")
 	class UStatComponent* StatComponent;
+
 };

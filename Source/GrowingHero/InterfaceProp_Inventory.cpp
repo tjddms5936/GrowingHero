@@ -28,14 +28,20 @@ void AInterfaceProp_Inventory::OnOverlapBegin(UPrimitiveComponent* OverlappedCom
 	m_bIsInRange = true;
 
 	// Super에서 이미 다 걸러서 내 캐릭터로 세팅된 상태
-	if(IsValid(m_pInterfacedUnit))
-		m_pInterfacedUnit->Fuc_DeleSingle.BindUFunction(this, FName("pickup"));
+	//if (IsValid(m_pInterfacedUnit))
+	//{
+	//	// m_pInterfacedUnit->Fuc_DeleSingle.BindUFunction(this, FName("pickup")); 싱글캐스트 함수 바인딩
+	//	m_pInterfacedUnit->Fuc_DeleMulti.AddUFunction(this, FName("pickup")); // 멀티캐스트 함수 추가
+	//}
 }
 
 void AInterfaceProp_Inventory::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	if (IsValid(m_pInterfacedUnit))
-		m_pInterfacedUnit->Fuc_DeleSingle.Unbind();
+	//if (IsValid(m_pInterfacedUnit))
+	//{
+	//	m_pInterfacedUnit->Fuc_DeleSingle.Unbind(); // 싱글캐스트 함수 언바인딩
+	//	m_pInterfacedUnit->Fuc_DeleMulti.Clear(); // 멀티캐스트 함수 초기화
+	//}
 	m_bIsInRange = false;
 	Super::OnOverlapEnd(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex);
 

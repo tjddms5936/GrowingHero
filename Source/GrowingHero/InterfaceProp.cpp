@@ -105,7 +105,7 @@ void AInterfaceProp::NotifyActorOnClicked(FKey PressedButton)
 		AMyCharacter* MyChar = Cast<AMyCharacter>(v);
 		if (MyChar)
 		{
-			m_pMyController->m_pClickedProp = this;
+			m_pMyController->setClickedActor(this);
 			m_pInterfacedUnit = MyChar;
 			break;
 		}
@@ -139,5 +139,6 @@ void AInterfaceProp::DestroyActor()
 	}
 	Destroy();
 }
+
 
 

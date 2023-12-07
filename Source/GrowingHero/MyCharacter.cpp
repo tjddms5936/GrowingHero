@@ -93,19 +93,24 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	check(PlayerInputComponent); // PlayerInputComponent가 false라면 코드 멈춤
 
-	PlayerInputComponent->BindAction("PickUpItem", IE_Pressed, this, &AMyCharacter::CallDelegate_PickUpItem);
+	// SpcaeBar를 누르면 호출할 함수 연결
+	// PlayerInputComponent->BindAction("PickUpItem", IE_Pressed, this, &AMyCharacter::CallDelegate_PickUpItem);
 }
 
 void AMyCharacter::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
-	Fuc_DeleSingle.Unbind();
+	// Fuc_DeleSingle.Unbind();  싱글캐스트의 경우 언바인딩 방법
+	// Fuc_DeleMulti.Clear(); // 멀티캐스트의 언바인딩 방법. 연결된 모든 함수 언바인딩
 }
 
 void AMyCharacter::CallDelegate_PickUpItem()
 {
-	if (Fuc_DeleSingle.IsBound() == true)
-		Fuc_DeleSingle.Execute();
+	/*if (Fuc_DeleSingle.IsBound() == true)  싱글 캐스트는 딱 하나의 함수만 연결된다.
+		Fuc_DeleSingle.Execute();  그리고 연결된 하나의 함수를 호출 */ 
+
+	//if (Fuc_DeleMulti.IsBound() == true)
+	//	Fuc_DeleMulti.Broadcast(); // 연결된 함수가 여러개 이니까 다 실행하도록 하는 함수
 }
 
 

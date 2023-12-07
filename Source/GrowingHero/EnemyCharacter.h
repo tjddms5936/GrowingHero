@@ -15,8 +15,11 @@ class GROWINGHERO_API AEnemyCharacter : public AUnitBase
 {
 	GENERATED_BODY()
 	
-private:
+protected:
+	// UPROPERTY(BlueprintReadOnly)
 	class AMyCharacterController* m_pMyController;
+
+	// UPROPERTY(BlueprintReadOnly)
 	class AMyCharacter* m_pMyHero;
 public:
 	AEnemyCharacter();
@@ -42,4 +45,9 @@ public:
 	void AddEXP();
 
 	virtual void MediateAttackRange(float fAddRangeAmount) override;
+	
+	UFUNCTION()
+	void OutlineOff();
 };
+
+

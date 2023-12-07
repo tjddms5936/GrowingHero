@@ -35,7 +35,7 @@ public:
 
 	virtual void NotifyActorOnClicked(FKey PressedButton = EKeys::LeftMouseButton) override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void pickup();
 
 };

@@ -21,11 +21,6 @@
 
 #include "Kismet/KismetMathLibrary.h"
 
-// #include "Blueprint/AIBlueprintHelperLibrary.h"
-//#include "NavigationSystem.h"
-//#include "AIController.h"
-//#include "Widgets/SWidget.h"
-
 AMyCharacterController::AMyCharacterController() :
 	bClickMouse{},
 	m_fInterfaceRagne{}
@@ -43,6 +38,9 @@ AMyCharacterController::AMyCharacterController() :
 
 	DefaultMouseCursor = EMouseCursor::Default;
 	CurrentMouseCursor = EMouseCursor::Default;
+
+	bEnableClickEvents = true;
+
 }
 
 void AMyCharacterController::SetupInputComponent()
@@ -65,6 +63,7 @@ void AMyCharacterController::SetupInputComponent()
 
 	InputComponent->BindAxis("MoveForward", this, &AMyCharacterController::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMyCharacterController::MoveRight);
+
 }
 
 
@@ -190,6 +189,8 @@ void AMyCharacterController::MoveRight(float Value)
 	m_pMyHero->AddMovementInput(Direction, Value);
 }
 
+
+
 AActor* AMyCharacterController::getClickedActor()
 {
 	return m_pClickedProp;
@@ -216,4 +217,9 @@ FVector AMyCharacterController::getMouseLocation()
 	GetHitResultUnderCursor(ECollisionChannel::ECC_Pawn, false, Hit);
 
 	return Hit.Location;
+}
+
+void AMyCharacterController::setClickedActor(AActor* pActor)
+{
+	m_pClickedProp = pActor;
 }

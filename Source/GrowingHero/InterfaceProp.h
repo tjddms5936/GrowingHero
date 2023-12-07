@@ -25,13 +25,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "InventoryProp|Info")
 	class USoundBase* ActivateSystemSound;
 
+	UPROPERTY(BlueprintReadOnly)
+	class AMyCharacterController* m_pMyController;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 protected:
-	class AMyCharacterController* m_pMyController;
 	bool m_bIsInRange;
+
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "InterfaceProp|UISC")
 	class AMyCharacter* m_pInterfacedUnit;
