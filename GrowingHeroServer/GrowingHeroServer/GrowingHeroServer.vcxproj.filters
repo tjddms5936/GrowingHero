@@ -15,14 +15,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="AccountMGR.cpp" />
-    <ClCompile Include="UserMGR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="AccountMGR.h" />
-    <ClInclude Include="UserMGR.h" />
   </ItemGroup>
 </Project>

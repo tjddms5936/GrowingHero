@@ -4,6 +4,9 @@
 // 클라나 게임서버에서 참조하길 원하는 애들을 모아놓는 용도
 
 #include "Types.h"
+#include "CoreTLS.h"
+#include "CoreGlobalVariable.h"
+#include "CoreMacro.h"
 
 #include <array>
 #include <vector>
@@ -16,3 +19,6 @@
 #include <unordered_set>
 
 using namespace std;
+
+#include "Windows.h"
+#include "RW_SpinLock.h"
